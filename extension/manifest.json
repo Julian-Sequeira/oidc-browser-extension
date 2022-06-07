@@ -13,6 +13,10 @@
 		    "js": ["content.js"]
 		}
 	 ],
+	 "browser_action": {
+		"default_title": "OIDC Authentication",
+		"default_icon": "lock_small.png"
+	 },
 	 "permissions": [
 	 	"storage",
 	 	"tabs",
