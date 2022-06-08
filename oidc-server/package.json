@@ -1,0 +1,17 @@
+{
+  "name": "oidc-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "oidc-provider": "^7.11.2",
+    "path": "^0.12.7",
+    "util": "^0.12.4"
+  }
+}
