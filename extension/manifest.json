@@ -15,7 +15,8 @@
 	 ],
 	 "browser_action": {
 		"default_title": "OIDC Authentication",
-		"default_icon": "lock_small.png"
+		"default_icon": "lock_small.png",
+		"default_popup": "views/popup.html"
 	 },
 	 "permissions": [
 	 	"storage",

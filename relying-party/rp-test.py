@@ -4,6 +4,16 @@ port = 1234
 
 import fcntl, os, sys, io
 
+redirect_string = "http://localhost:4321/auth?"\
+    "client_id=RP-TEST"\
+    "&redirect_uri=http%3A%2F%2Flocalhost%3A1234"\
+    "&response_type=code"\
+    "&scope=openid"\
+    "&state=c6a6d8d043d84f7697b8e1b029bcabc8"\
+    "&code_challenge=UfYlhhGrlE8gnsqHD"\
+    "&code_challenge_method=S256"\
+    "&response_mode=fragment"
+
 class Handler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == '/':
@@ -19,12 +29,13 @@ class Handler(http.server.BaseHTTPRequestHandler):
         if self.path == '/redirect':
             self.send_response(302)
             self.send_header('Location', 
-                """https://server.example.com/authorize?
-                response_type=code
-                &scope=openid%20profile%20email
-                &client_id=s6BhdRkqt3
-                &state=af0ifjsldkj
-                &redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb"""
+                # """https://server.example.com/authorize?
+                # response_type=code
+                # &scope=openid%20profile%20email
+                # &client_id=s6BhdRkqt3
+                # &state=af0ifjsldkj
+                # &redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb"""
+                redirect_string
             )
             self.end_headers()
 

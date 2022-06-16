@@ -22,17 +22,27 @@ async function notifyFlowStart() {
 
 
 let responseHandler = async function(details) {
-    console.log("Interrupted Redirect Here");
+    
     if (details.statusCode == 302) {
+        console.log("Interrupted Redirect Here");
+        notifyFlowStart();
 
         // Get the RP parameters to start OIDC flow
         details.responseHeaders.forEach((header, i) => {
             if (header.name.toLowerCase() == "location") {
-                console.log(header.value);
+                uri = header.value
+                console.log(uri);
+                chrome.runtime.sendMessage({
+                    msg: "REDIRECT LOCATION RECEIVED", 
+                    data: {
+                        value: uri 
+                    }
+                });
             }
         })
-        notifyFlowStart();
+        
     }
+    notifyFlowStart();
 }
 
 
